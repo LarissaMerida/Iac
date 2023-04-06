@@ -18,11 +18,13 @@ provider "aws" {
 
 // ddefine as configurações de recursos
 resource "aws_instance" "app_server" {
-  ami           = "ami-0fcf52bcf5db7b003"
-  instance_type = "t2.micro"
-  key_name = "iac-alura"
+    ami           = "ami-0fcf52bcf5db7b003"
+    instance_type = "t2.micro"
+    key_name = "iac-alura"
+    user_data = "${file("init.sh")}"
+    user_data_replace_on_change = true
 
-  tags = {
-    Name = "Primeira Instância"
-  }
+    tags = {
+        Name = "Teste aws"
+    }
 }
