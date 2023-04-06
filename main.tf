@@ -21,10 +21,10 @@ resource "aws_instance" "app_server" {
     ami           = "ami-0fcf52bcf5db7b003"
     instance_type = "t2.micro"
     key_name = "iac-alura"
-    user_data = "${file("init.sh")}"
-    user_data_replace_on_change = true
+    // user_data = "${file("init.sh")}"
+    // user_data_replace_on_change = true
 
     tags = {
-        Name = "Teste aws"
+        Name = "terraform ansible python"
     }
 }
