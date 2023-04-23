@@ -1,0 +1,8 @@
+---
+joomla_username: root
+joomla_db_name: joomla_db
+joomla_user_password: 
+joomla_installation_dir: '/var/www/html/joomla'
+
+php_version: '7.3'
+

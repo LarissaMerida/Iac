@@ -1,0 +1,25 @@
+---
+
+- name: Adiciona repositorio do PHP 8
+  become: true
+  apt_repository:
+      repo: 'ppa:ondrej/php'
+
+- name: Instala pacotes de dependencias do sistema operacional
+  apt:
+    name: 
+      - php{{ php_version }}
+      - apache2
+      - libapache2-mod-php{{ php_version }}
+      - php{{ php_version }}-gd
+      - php{{ php_version }}-mcrypt
+      - php{{ php_version }}-mysql
+      - unzip
+      - zip
+      - libssl1.1
+      - php{{ php_version }}-xml
+      - php{{ php_version }}-fpm
+      - php{{ php_version }}-intl
+      - php{{ php_version }}-mbstring
+    state: latest
+  become: yes

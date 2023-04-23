@@ -1,0 +1,45 @@
+---
+# - name: Baixa o arquivo de instalacao do Joomla
+#   get_url:
+#     url: 
+#     dest: /tmp/joomla.zip
+
+- name: Cria a pasta de instalacao do Joomla
+  file:
+    path: "{{ joomla_installation_dir }}"
+    state: directory
+  become: yes
+
+- name: Copia o arquivo de instalacao do Joomla
+  copy:
+    src: /home/larissa/Documentos/itec/backup.zip
+    dest: /tmp/joomla.zip
+  become: yes
+
+- name: Descompactar o joomla
+  shell: unzip -o /tmp/joomla.zip -d {{ joomla_installation_dir }}
+  become: yes
+
+
+- name: Configura Apache para servir joomla
+  template:
+    src: 'templates/000-default.conf.j2'
+    dest: '/etc/apache2/sites-available/000-default.conf'
+  become: yes
+  notify: 
+    - restart apache
+    - restart php-fpm
+
+- name: Altera permissão da pasta de instalacao
+  shell: chmod -R 777 {{ joomla_installation_dir }}/installation
+  become: yes
+
+- name: Altera permissao do arquivo de configuracao
+  shell: chown -R www-data:www-data {{ joomla_installation_dir }}
+  become: yes
+  notify: 
+    - restart apache
+    - restart php-fpm
+
+
+

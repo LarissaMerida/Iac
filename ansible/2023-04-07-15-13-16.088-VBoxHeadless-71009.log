@@ -1,0 +1,12 @@
+Log created: 2023-04-07T15:13:16.883035000Z
+Process ID:  71009 (0x11561)
+Parent PID:  55261 (0xd7dd)
+Executable:  /usr/lib/virtualbox/VBoxHeadless
+Arg[0]: /usr/lib/virtualbox/VBoxHeadless
+Arg[1]: --comment
+Arg[2]: ansible_mysql_1680869312139_27666
+Arg[3]: --startvm
+Arg[4]: 659cd0ba-e67b-438b-9383-b6df4c84dda6
+Arg[5]: --vrde
+Arg[6]: config
+AddRef: illegal refcnt=3221225469 state=2

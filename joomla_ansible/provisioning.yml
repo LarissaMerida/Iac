@@ -1,0 +1,8 @@
+- hosts: database 
+  roles:
+    - mysql
+    
+- hosts: joomla
+  roles:
+    - webserver
+    - joomla
